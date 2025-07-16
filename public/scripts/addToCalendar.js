@@ -71,7 +71,8 @@ function buildGoogleCalendarURL(evt) {
 
 document.getElementById('add-to-calendar')?.addEventListener('click', () => {
   if (isAndroid) {
-    window.open(buildGoogleCalendarURL(enrichedEvent), '_blank');
+    downloadICSFromServer();
+    // window.open(buildGoogleCalendarURL(enrichedEvent), '_blank');
   } else if (isiOS) {
     // downloadICS(enrichedEvent);
     downloadICSFromServer();
