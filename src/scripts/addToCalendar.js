@@ -61,8 +61,8 @@ function buildGoogleCalendarURL(evt) {
 }
 
 document.getElementById('add-to-calendar')?.addEventListener('click', () => {
+  alert("entra");
   if (isAndroid) {
-    alert("entra");
     window.open(buildGoogleCalendarURL(enrichedEvent), '_blank');
   } else if (isiOS) {
     downloadICS(enrichedEvent);
