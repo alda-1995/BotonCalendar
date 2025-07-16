@@ -62,12 +62,16 @@ function buildGoogleCalendarURL(evt) {
 
 document.getElementById('add-to-calendar')?.addEventListener('click', () => {
   if (isAndroid) {
-    alert("entra android");
-    window.open(buildGoogleCalendarURL(enrichedEvent), '_blank');
+    const open = confirm('¿Deseas abrir Google Calendar (Aceptar) o descargar el evento (.ics) (Cancelar)?');
+    if (open) {
+      window.open(buildGoogleCalendarURL(enrichedEvent), '_blank');
+    } else {
+      downloadICS(enrichedEvent);
+    }
   } else if (isiOS) {
-    downloadICS(enrichedEvent);
+    downloadICS(enrichedEvent); // iOS lo abre en la app Calendario
   } else {
-    const choice = confirm('Abrir Google Calendar (Aceptar) o descargar .ics (Cancelar)?');
+    const choice = confirm('Abrir Google Calendar (Aceptar) o descargar evento (.ics) (Cancelar)?');
     if (choice) {
       window.open(buildGoogleCalendarURL(enrichedEvent), '_blank');
     } else {
